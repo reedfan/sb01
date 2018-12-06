@@ -1,0 +1,32 @@
+server:
+  port: 8082
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /reed
+
+book:
+  author: reed
+  price: 19
+
+cupSize: B
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  messages:
+    encoding: UTF-8
+  datasource:
+    driver-class-name:
+    url:
+    data-username:
+    data-password:
+
+
+
+#  spring.datasource.driver-class-name =com.mysql.jdbc.Driver
+#  spring.datasource.url =jdbc:mysql://localhost:3306/springboot_mybatis
+#  spring.datasource.username =root
+#  spring.datasource.password =root
