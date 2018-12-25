@@ -3,6 +3,7 @@ package com.ustc.reed.controller;
 import com.ustc.reed.pojo.Book;
 import com.ustc.reed.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ public class HelloController {
     private Book book;
 
     @Autowired
+    @Qualifier("helloService1Impl")
     private HelloService helloService;
 
     @RequestMapping(value = "/hello",method = RequestMethod.GET)

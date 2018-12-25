@@ -7,8 +7,7 @@ import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-@Service
-
+@Service("helloServiceImpl")
 public class HelloServiceImpl implements HelloService {
 
     @Autowired

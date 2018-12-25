@@ -11,6 +11,9 @@ book:
 
 cupSize: B
 spring:
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
   http:
     encoding:
       charset: UTF-8
@@ -24,10 +27,18 @@ spring:
     username: root
     password: reedfan1991
 
+
+
   redis:
     host: 47.101.47.253
     port: 6379
     password: root
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml    #  mybatis主配置文件所在路径
+  mapper-locations: classpath:mybatis/mapper/*.xml  #  所有的mapper映射文件
+  type-aliases-package: com.ustc.reed.pojo                       # 定义所有操作类的别名所在包
+
+
 
 
 
