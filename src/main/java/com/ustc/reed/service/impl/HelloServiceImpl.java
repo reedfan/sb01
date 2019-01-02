@@ -15,9 +15,9 @@ public class HelloServiceImpl implements HelloService {
     @Override
     public String say() {
         System.out.println("hello");
-        worldService.speak();
+        String str = worldService.speak();
         System.out.println("reed");
-        return "success";
+        return str;
 
 
     }

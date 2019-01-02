@@ -1,5 +1,6 @@
 package com.ustc.reed.service.impl;
 
+import com.google.gson.Gson;
 import com.ustc.reed.mapper.DeptMapper;
 import com.ustc.reed.pojo.Dept;
 import com.ustc.reed.service.DeptService;
@@ -16,6 +17,10 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public List<Dept> findAll() {
         List<Dept> list = deptMapper.findAll();
+
+        Gson gson = new Gson();
+        String str = gson.toJson(list);
+        System.out.println(str);
         return list;
     }
 }

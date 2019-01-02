@@ -6,8 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class WorldServiceImpl implements WorldService {
     @Override
-    public void speak() {
+    public String speak() {
         System.out.println("world");
+        return "world";
 
 
     }

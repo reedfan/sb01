@@ -6,10 +6,12 @@ import com.ustc.reed.service.impl.HelloServiceImpl;
 import com.ustc.reed.service.impl.WorldServiceImpl;
 import org.junit.Before;
 
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -22,37 +24,31 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Sb01Application.class)
-@WebAppConfiguration
+@RunWith(MockitoJUnitRunner.class)
+/* @SpringBootTest(classes = Sb01Application.class)
+@WebAppConfiguration*/
 
 public class HelloServiceTest {
 
-   /* @Autowired
+
+
+
+    @InjectMocks
     private HelloService helloService;
 
-    @Test
-    public void test(){
-        helloService.say();
-
-    }*/
-
-  /* @Before
-    public void initMocks() throws Exception {
-        MockitoAnnotations.initMocks(this);
-    }*/
+    @Mock
+    private WorldService worldService;
 
 
-   @Autowired
-    private HelloServiceImpl helloService;
+    @BeforeClass
+    public void setup(){
+   //     MockitoAnnotations.initMocks(this);
+        Mockito.when(worldService.speak()).thenReturn("xixihaha");
+      //  when(helloService.say()).thenReturn("heng");
 
-    @Autowired
-    private WorldServiceImpl worldService;
-
- /*  @MockBean
-   private HelloServiceImpl helloService;*/
+    }
 
 
 
@@ -60,9 +56,12 @@ public class HelloServiceTest {
     @Test
     public void test(){
         System.out.println("start mock....");
-        when(helloService.say()).thenReturn("null");
-        helloService.say();
+      //  when(helloService.say()).thenReturn("null");
+        System.out.println(helloService.say());
 
+        verify(worldService,times(3));
+
+        System.out.println("end mock....");
     }
 
 
