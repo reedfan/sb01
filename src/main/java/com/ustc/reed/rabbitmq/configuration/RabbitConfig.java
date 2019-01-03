@@ -1,5 +1,9 @@
-package com.ustc.reed.configuration;
+package com.ustc.reed.rabbitmq.configuration;
 
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -61,6 +65,23 @@ public class RabbitConfig {
         return template;
 
     }
+
+    @Bean
+    public DirectExchange defaultExchange(){
+        return new DirectExchange(EXCHANGE_A);
+    }
+
+    @Bean
+    public Queue queueA(){
+        return new Queue(QUEUE_A,true);
+    }
+
+    @Bean
+    public Binding binding(){
+        return BindingBuilder.bind(queueA()).to(defaultExchange()).with(RabbitConfig.ROUTINGKEY_A);
+    }
+
+
 
 
 

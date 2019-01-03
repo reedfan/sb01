@@ -1,6 +1,7 @@
 package com.ustc.reed.controller;
 
 import com.ustc.reed.pojo.Book;
+import com.ustc.reed.rabbitmq.MsgProducer;
 import com.ustc.reed.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,10 +12,22 @@ import org.springframework.web.bind.annotation.*;
 public class HelloController {
 
     @Autowired
+    private MsgProducer msgProducer;
+
+    @GetMapping(value = "/sendmsg")
+    public String sendMsg() {
+        String content = "jj";
+
+        msgProducer.sendMsd(content);
+        return content;
+    }
+
+
+
+        @Autowired
     private Book book;
 
     @Autowired
-    @Qualifier("helloService1Impl")
     private HelloService helloService;
 
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
