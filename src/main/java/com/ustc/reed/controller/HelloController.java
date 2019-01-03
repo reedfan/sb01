@@ -24,10 +24,8 @@ public class HelloController {
 
 
 
-        @Autowired
-    private Book book;
-
     @Autowired
+    private Book book;
     private HelloService helloService;
 
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
@@ -36,7 +34,7 @@ public class HelloController {
         return book.getAuthor();
     }
 
-    @RequestMapping(value = "/hello/{price}",method = RequestMethod.GET)
+    @RequestMapping(value = "/hello1/{price}",method = RequestMethod.GET)
     public Integer price(@PathVariable("price") Integer price){
         return price;
     }
