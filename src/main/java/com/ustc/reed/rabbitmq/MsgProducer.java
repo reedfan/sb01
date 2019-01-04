@@ -31,6 +31,11 @@ public class MsgProducer implements RabbitTemplate.ConfirmCallback {
     }
 
 
+    public void sendAll(String content){
+        rabbitTemplate.convertAndSend(RabbitConfig.FANOUTEXCHANGE,content);
+    }
+
+
     @Override
     public void confirm(CorrelationData correlationData, boolean ask, String cause) {
         logger.info("回调id"+correlationData);

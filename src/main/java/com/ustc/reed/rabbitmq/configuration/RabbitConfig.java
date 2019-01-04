@@ -1,9 +1,6 @@
 package com.ustc.reed.rabbitmq.configuration;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -38,6 +35,8 @@ public class RabbitConfig {
     public static final String QUEUE_B = "QUEUE_B";
     public static final String QUEUE_C = "QUEUE_C";
 
+    public static final String FANOUTEXCHANGE = "fanoutExchange";
+
     public static final String ROUTINGKEY_A = "spring-boot-routingKey_A";
     public static final String ROUTINGKEY_B = "spring-boot-routingKey_B";
     public static final String ROUTINGKEY_C = "spring-boot-routingKey_C";
@@ -66,6 +65,8 @@ public class RabbitConfig {
 
     }
 
+
+
     @Bean
     public DirectExchange defaultExchange(){
         return new DirectExchange(EXCHANGE_A);
@@ -77,8 +78,32 @@ public class RabbitConfig {
     }
 
     @Bean
-    public Binding binding(){
+    public Binding bindingA(){
         return BindingBuilder.bind(queueA()).to(defaultExchange()).with(RabbitConfig.ROUTINGKEY_A);
+    }
+
+
+
+
+    @Bean
+    public FanoutExchange fanoutExchange(){
+        return new FanoutExchange(RabbitConfig.FANOUTEXCHANGE);
+    }
+
+    @Bean
+    public Binding bindingExchangeA(Queue queueA,FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(queueA).to(fanoutExchange);
+    }
+
+    @Bean
+    public Binding bindingExchangeB(Queue queueB,FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(queueB).to(fanoutExchange);
+    }
+
+    @Bean
+    public Binding bindingExchangeC(Queue queueC,FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(queueC).to(fanoutExchange);
+
     }
 
 

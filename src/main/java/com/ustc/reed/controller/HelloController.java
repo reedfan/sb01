@@ -14,6 +14,11 @@ public class HelloController {
     @Autowired
     private MsgProducer msgProducer;
 
+    @Autowired
+    private Book book;
+    @Autowired
+    private HelloService helloService;
+
     @GetMapping(value = "/sendmsg")
     public String sendMsg() {
         String content = "jj";
@@ -22,11 +27,17 @@ public class HelloController {
         return content;
     }
 
+    @GetMapping(value = "/sendAll")
+    public String sendAll() {
+        String content = "hello ,rabbit";
+
+        msgProducer.sendMsd(content);
+        return content;
+    }
 
 
-    @Autowired
-    private Book book;
-    private HelloService helloService;
+
+
 
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
     public String say(){
