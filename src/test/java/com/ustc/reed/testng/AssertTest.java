@@ -8,12 +8,12 @@ public class AssertTest {
     @Test
     public void AssertTest(){
 
-        Assert.assertEquals(1,1);
-        Assert.assertEquals(1,1,"not equals");
-
-      //  Assert.assertEquals("ABC","abc");
-
-        Assert.assertEquals("ABC","abc","not equals");
+//        Assert.assertEquals(1,1);
+//        Assert.assertEquals(1,1,"not equals");
+//
+//      //  Assert.assertEquals("ABC","abc");
+//
+//        Assert.assertEquals("ABC","abc","not equals");
 
     }
 

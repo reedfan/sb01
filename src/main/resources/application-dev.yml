@@ -51,6 +51,9 @@ mybatis:
   type-aliases-package: com.ustc.reed.pojo                       # 定义所有操作类的别名所在包
 
 
+upload-path: /Users/qufan/Downloads/pictest
+
+
 
 
 
