@@ -12,6 +12,7 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -26,9 +27,12 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 /* @SpringBootTest(classes = Sb01Application.class)
 @WebAppConfiguration*/
+
+//@RunWith(SpringRunner.class)
+@SpringBootTest
 
 public class HelloServiceTest {
 
@@ -36,17 +40,17 @@ public class HelloServiceTest {
 
 
     @InjectMocks
-    private HelloService helloService;
+    private HelloServiceImpl helloService;
 
     @Mock
-    private WorldService worldService;
+    private WorldServiceImpl worldService;
 
 
-    @BeforeClass
+    @BeforeMethod
     public void setup(){
-   //     MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this);
         Mockito.when(worldService.speak()).thenReturn("xixihaha");
-      //  when(helloService.say()).thenReturn("heng");
+        when(helloService.say()).thenReturn("heng");
 
     }
 
