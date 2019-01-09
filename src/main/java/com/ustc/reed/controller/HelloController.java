@@ -6,9 +6,11 @@ import com.ustc.reed.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Scope("prototype")
 public class HelloController {
 
     @Autowired
@@ -18,6 +20,18 @@ public class HelloController {
     private Book book;
     @Autowired
     private HelloService helloService;
+
+    private int i = 0;
+    @GetMapping(value = "/test1")
+    public int testInstance1(){
+        i++;
+        return i;
+    }
+    @GetMapping(value = "/test2")
+    public int testInstance2(){
+        i++;
+        return i;
+    }
 
     @GetMapping(value = "/sendmsg")
     public String sendMsg() {
@@ -63,6 +77,10 @@ public class HelloController {
 
 
     }
+
+
+
+
 
 
 
