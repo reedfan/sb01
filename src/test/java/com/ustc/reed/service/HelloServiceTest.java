@@ -50,7 +50,7 @@ public class HelloServiceTest {
     public void setup(){
         MockitoAnnotations.initMocks(this);
         Mockito.when(worldService.speak()).thenReturn("xixihaha");
-        when(helloService.say()).thenReturn("heng");
+     //   when(helloService.say()).thenReturn("heng");
 
     }
 
@@ -60,7 +60,7 @@ public class HelloServiceTest {
     @Test
     public void test(){
         System.out.println("start mock....");
-      //  when(helloService.say()).thenReturn("null");
+        when(helloService.say()).thenReturn("null");
         System.out.println(helloService.say());
 
         verify(worldService,times(3));
