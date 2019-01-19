@@ -1,11 +1,11 @@
 package com.ustc.reed.controller;
 
+import com.ustc.reed.pojo.TbUser;
 import com.ustc.reed.pojo.User;
+import com.ustc.reed.service.TbUserService;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -15,6 +15,9 @@ import javax.validation.Valid;
 @RestController
 
 public class UserController {
+
+    @Autowired
+    TbUserService tbUserService;
 
 
     @PostMapping
@@ -29,6 +32,12 @@ public class UserController {
 
         user.setId("1");
         return user;
+    }
+
+
+    @GetMapping("/getUserByName")
+    public TbUser getUserByName(String userName){
+        return tbUserService.selctUserByName(userName);
     }
 
 
