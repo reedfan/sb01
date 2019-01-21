@@ -4,6 +4,8 @@ import com.ustc.reed.pojo.TbUser;
 import com.ustc.reed.pojo.User;
 import com.ustc.reed.service.TbUserService;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ import javax.validation.Valid;
 @RestController
 
 public class UserController {
+    private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     TbUserService tbUserService;
@@ -37,6 +40,7 @@ public class UserController {
 
     @GetMapping("/getUserByName")
     public TbUser getUserByName(String userName){
+        logger.debug("userName{}",userName);
         return tbUserService.selctUserByName(userName);
     }
 

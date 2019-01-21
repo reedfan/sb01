@@ -57,3 +57,12 @@ upload-path: /Users/qufan/Downloads/pictest
 
 
 
+
+#   设置日志级别和日志路径
+#logging:
+#  file: /Users/qufan/Documents/log/sb01.log
+#  level:
+#    com:
+#      ustc:
+#        reed: DEBUG
+
