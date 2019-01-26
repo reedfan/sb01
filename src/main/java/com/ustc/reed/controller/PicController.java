@@ -26,7 +26,7 @@ public class PicController {
     @Value("${upload-path}")
     private String path;
 
-    @RequestMapping("test")
+    @GetMapping("test")
     public ModelAndView toUpload(ModelAndView modelAndView){
 
         modelAndView.setViewName("test");
