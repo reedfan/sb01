@@ -2,8 +2,8 @@ server:
   port: 8082
   tomcat:
     uri-encoding: UTF-8
-  servlet:
-    context-path: /reed
+#  servlet:
+#    context-path: /reed
 
 book:
   author: reed
@@ -34,17 +34,21 @@ spring:
   messages:
     encoding: UTF-8
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.101.47.253:3306/yiliao
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://47.101.47.253:3306/yiliao?useUnicode=true&characterEncoding=UTF-8
+#    username: root
+#    password: reedfan1991
+    url: jdbc:mysql://localhost:3306/yiliao?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
     username: root
-    password: reedfan1991
+    password: root
+
 
 
 
   redis:
     host: 47.101.47.253
     port: 6379
-    password: root
+    password: P@ssword1991
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml    #  mybatis主配置文件所在路径
   mapper-locations: classpath:mybatis/mapper/*.xml  #  所有的mapper映射文件
@@ -54,7 +58,14 @@ mybatis:
 upload-path: /Users/qufan/Downloads/pictest
 
 
+security:
+  basic:
+    enabled: true
 
+reed:
+  security:
+    browser:
+      loginPage: /demo-signIn.html
 
 
 
@@ -65,4 +76,5 @@ upload-path: /Users/qufan/Downloads/pictest
 #    com:
 #      ustc:
 #        reed: DEBUG
+
 
