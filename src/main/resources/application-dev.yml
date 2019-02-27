@@ -44,6 +44,19 @@ spring:
 
 
 
+  mail:
+    host: smtp.163.com
+    username: m18915228146@163.com
+    password: reed1991
+    port: 25
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 25000
+
+
+
 
   redis:
     host: 47.101.47.253
@@ -76,5 +89,17 @@ reed:
 #    com:
 #      ustc:
 #        reed: DEBUG
+
+
+async:
+  executor:
+    thread:
+      core_pool_size: 5
+      max_pool_size: 5
+      queue_capacity: 99999
+      name:
+        prefix: async-service-
+
+
 
 
